@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "python -m http.server 8000",
-    "build": "echo 'No build process needed - uses CDN dependencies'",
+    "build": "if not exist public mkdir public && xcopy /E /I /Y *.html public\\ && xcopy /E /I /Y *.json public\\ && xcopy /E /I /Y css public\\css\\ && xcopy /E /I /Y js public\\js\\",
     "deploy": "firebase deploy",
     "serve": "firebase serve"
   },
