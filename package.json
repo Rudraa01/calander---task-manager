@@ -1,0 +1,30 @@
+{
+  "name": "calendar-task-manager",
+  "version": "1.0.0",
+  "description": "A modern calendar and task management application with Firebase integration",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'No build process needed - uses CDN dependencies'",
+    "deploy": "firebase deploy",
+    "serve": "firebase serve"
+  },
+  "keywords": [
+    "calendar",
+    "task-manager",
+    "firebase",
+    "tailwind",
+    "pwa",
+    "fullcalendar"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase-tools": "^12.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

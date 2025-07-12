@@ -1,0 +1,316 @@
+/* Custom Tailwind CSS directives and additional styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and transitions */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn 0.5s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+/* FullCalendar custom styles */
+.fc-theme-standard .fc-scrollgrid {
+  border: 1px solid #e5e7eb;
+}
+
+.dark .fc-theme-standard .fc-scrollgrid {
+  border: 1px solid #374151;
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+  border: 1px solid #e5e7eb;
+}
+
+.dark .fc-theme-standard td, .dark .fc-theme-standard th {
+  border: 1px solid #374151;
+}
+
+.fc-theme-standard .fc-scrollgrid-sync-table {
+  background: white;
+}
+
+.dark .fc-theme-standard .fc-scrollgrid-sync-table {
+  background: #1f2937;
+}
+
+.fc-col-header-cell {
+  background: #f9fafb;
+  font-weight: 600;
+  color: #374151;
+}
+
+.dark .fc-col-header-cell {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.fc-daygrid-day-number {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.dark .fc-daygrid-day-number {
+  color: #d1d5db;
+}
+
+.fc-day-today {
+  background: #eff6ff !important;
+}
+
+.dark .fc-day-today {
+  background: #1e3a8a !important;
+}
+
+.fc-day-other {
+  background: #f9fafb;
+}
+
+.dark .fc-day-other {
+  background: #111827;
+}
+
+.fc-event {
+  border: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.fc-event-title {
+  color: white;
+}
+
+/* Priority colors for tasks */
+.priority-high {
+  background: #dc2626;
+  border-left: 4px solid #b91c1c;
+}
+
+.priority-medium {
+  background: #f59e0b;
+  border-left: 4px solid #d97706;
+}
+
+.priority-low {
+  background: #10b981;
+  border-left: 4px solid #059669;
+}
+
+/* Task list styles */
+.task-item {
+  @apply bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-200 dark:border-gray-600 hover:shadow-sm transition-all duration-200;
+}
+
+.task-item.completed {
+  @apply opacity-60;
+}
+
+.task-item.completed .task-title {
+  @apply line-through text-gray-500 dark:text-gray-400;
+}
+
+.task-priority-indicator {
+  @apply w-3 h-3 rounded-full;
+}
+
+.task-priority-high {
+  @apply bg-red-500;
+}
+
+.task-priority-medium {
+  @apply bg-yellow-500;
+}
+
+.task-priority-low {
+  @apply bg-green-500;
+}
+
+.task-tag {
+  @apply inline-block px-2 py-1 text-xs font-medium rounded-full;
+}
+
+.task-tag-work {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200;
+}
+
+.task-tag-personal {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200;
+}
+
+.task-tag-health {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200;
+}
+
+.task-tag-default {
+  @apply bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200;
+}
+
+/* Modal animations */
+.modal-backdrop {
+  @apply transition-opacity duration-300;
+}
+
+.modal-content {
+  @apply transform transition-all duration-300;
+}
+
+.modal-enter {
+  @apply opacity-0;
+}
+
+.modal-enter .modal-content {
+  @apply scale-95 translate-y-4;
+}
+
+.modal-enter-active {
+  @apply opacity-100;
+}
+
+.modal-enter-active .modal-content {
+  @apply scale-100 translate-y-0;
+}
+
+/* Responsive sidebar */
+@media (max-width: 1024px) {
+  #sidebar {
+    position: fixed;
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+  }
+}
+
+/* Form focus styles */
+.form-input:focus {
+  @apply ring-2 ring-primary-500 border-primary-500;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+/* Loading states */
+.loading-spinner {
+  @apply animate-spin rounded-full border-2 border-gray-300 border-t-primary-600;
+}
+
+/* Custom checkbox styles */
+.custom-checkbox {
+  @apply rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-700;
+}
+
+/* Calendar navigation buttons */
+.fc-button {
+  @apply bg-primary-600 hover:bg-primary-700 border-primary-600 hover:border-primary-700 text-white font-medium transition-colors duration-200;
+}
+
+.fc-button-primary:not(:disabled).fc-button-active,
+.fc-button-primary:not(:disabled):active {
+  @apply bg-primary-700 border-primary-700;
+}
+
+/* Dark mode specific overrides */
+.dark .fc-button {
+  @apply bg-primary-500 hover:bg-primary-600 border-primary-500 hover:border-primary-600;
+}
+
+.dark .fc-button-primary:not(:disabled).fc-button-active,
+.dark .fc-button-primary:not(:disabled):active {
+  @apply bg-primary-600 border-primary-600;
+}
+
+/* Print styles */
+@media print {
+  #sidebar,
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-friendly {
+    background: white !important;
+    color: black !important;
+  }
+}
