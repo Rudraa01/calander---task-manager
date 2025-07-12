@@ -7,7 +7,7 @@ import {
     GoogleAuthProvider,
     signOut,
     onAuthStateChanged
-} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
 // Test Firebase connection immediately
 console.log('🔧 Auth module loaded');
@@ -76,8 +76,11 @@ async function loginWithEmail(email, password) {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         console.log('Login successful:', userCredential.user.uid); // Debug log
         showSuccess('Login successful!');
-        // Redirect to dashboard
-        window.location.href = 'dashboard.html';
+        
+        // Add a small delay before redirect
+        setTimeout(() => {
+            window.location.href = './dashboard.html';
+        }, 1000);
     } catch (error) {
         console.error('Login error:', error); // Debug log
         let errorMessage = 'Login failed. Please try again.';
@@ -117,8 +120,11 @@ async function registerWithEmail(email, password) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         console.log('Registration successful:', userCredential.user.uid); // Debug log
         showSuccess('Account created successfully!');
-        // Redirect to dashboard
-        window.location.href = 'dashboard.html';
+        
+        // Add a small delay before redirect
+        setTimeout(() => {
+            window.location.href = './dashboard.html';
+        }, 1000);
     } catch (error) {
         console.error('Registration error:', error); // Debug log
         let errorMessage = 'Registration failed. Please try again.';
@@ -187,17 +193,27 @@ async function logout() {
 // Check authentication state
 function checkAuthState() {
     onAuthStateChanged(auth, (user) => {
+        console.log('Auth state changed. User:', user ? user.email : 'not signed in');
         if (user) {
             // User is signed in
-            if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-                // Redirect to dashboard if on login page
-                window.location.href = 'dashboard.html';
+            const currentPath = window.location.pathname;
+            console.log('Current path:', currentPath);
+            
+            if (currentPath === '/' || 
+                currentPath === '/index.html' || 
+                currentPath.endsWith('/index.html') || 
+                currentPath === '') {
+                console.log('Redirecting to dashboard...');
+                window.location.href = './dashboard.html';
             }
         } else {
             // User is signed out
-            if (window.location.pathname.includes('dashboard.html')) {
-                // Redirect to login page if on dashboard
-                window.location.href = 'index.html';
+            const currentPath = window.location.pathname;
+            console.log('Current path:', currentPath);
+            
+            if (currentPath.includes('dashboard.html')) {
+                console.log('Redirecting to login...');
+                window.location.href = './index.html';
             }
         }
     });
