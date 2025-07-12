@@ -237,12 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAuthState();
     
     // Login form handler
-    const loginFormElement = loginForm?.querySelector('form');
-    if (loginFormElement) {
-        console.log('Login form found and event listener attached'); // Debug log
-        loginFormElement.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log('Login form submitted'); // Debug log
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        console.log('Login button found and event listener attached'); // Debug log
+        loginBtn.addEventListener('click', async () => {
+            console.log('Login button clicked'); // Debug log
             
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -257,16 +256,15 @@ document.addEventListener('DOMContentLoaded', () => {
             await loginWithEmail(email, password);
         });
     } else {
-        console.log('Login form not found'); // Debug log
+        console.log('Login button not found'); // Debug log
     }
     
     // Register form handler
-    const registerFormElement = registerForm?.querySelector('form');
-    if (registerFormElement) {
-        console.log('Register form found and event listener attached'); // Debug log
-        registerFormElement.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log('Register form submitted'); // Debug log
+    const registerBtn = document.getElementById('registerBtn');
+    if (registerBtn) {
+        console.log('Register button found and event listener attached'); // Debug log
+        registerBtn.addEventListener('click', async () => {
+            console.log('Register button clicked'); // Debug log
             
             const email = document.getElementById('regEmail').value;
             const password = document.getElementById('regPassword').value;
