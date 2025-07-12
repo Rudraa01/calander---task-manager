@@ -79,7 +79,7 @@ async function loginWithEmail(email, password) {
         
         // Add a small delay before redirect
         setTimeout(() => {
-            window.location.href = './dashboard.html';
+            window.location.href = '/dashboard.html';
         }, 1000);
     } catch (error) {
         console.error('Login error:', error); // Debug log
@@ -123,7 +123,7 @@ async function registerWithEmail(email, password) {
         
         // Add a small delay before redirect
         setTimeout(() => {
-            window.location.href = './dashboard.html';
+            window.location.href = '/dashboard.html';
         }, 1000);
     } catch (error) {
         console.error('Registration error:', error); // Debug log
@@ -157,7 +157,7 @@ async function signInWithGoogle() {
         const result = await signInWithPopup(auth, googleProvider);
         showSuccess('Google sign-in successful!');
         // Redirect to dashboard
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard.html';
     } catch (error) {
         console.error('Google sign-in error:', error);
         let errorMessage = 'Google sign-in failed. Please try again.';
@@ -183,7 +183,7 @@ async function logout() {
         await signOut(auth);
         showSuccess('Logged out successfully!');
         // Redirect to login page
-        window.location.href = 'index.html';
+        window.location.href = '/index.html';
     } catch (error) {
         console.error('Logout error:', error);
         showError('Logout failed. Please try again.');
@@ -204,7 +204,7 @@ function checkAuthState() {
                 currentPath.endsWith('/index.html') || 
                 currentPath === '') {
                 console.log('Redirecting to dashboard...');
-                window.location.href = './dashboard.html';
+                window.location.href = '/dashboard.html';
             }
         } else {
             // User is signed out
@@ -213,7 +213,7 @@ function checkAuthState() {
             
             if (currentPath.includes('dashboard.html')) {
                 console.log('Redirecting to login...');
-                window.location.href = './index.html';
+                window.location.href = '/index.html';
             }
         }
     });

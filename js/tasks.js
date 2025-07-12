@@ -11,7 +11,7 @@ import {
     orderBy, 
     onSnapshot,
     serverTimestamp
-} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+} from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
 
 let tasks = [];
 let currentUser = null;

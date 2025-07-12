@@ -1,6 +1,6 @@
 // Dashboard main module
 import { auth } from './firebase-config.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
 import { listenForTasks as listenForTasksInCalendar } from './calendar.js';
 import { listenForTasks as listenForTasksInTasks } from './tasks.js';
 import { logout } from './auth.js';
